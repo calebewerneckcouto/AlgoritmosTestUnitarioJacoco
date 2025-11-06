@@ -13,6 +13,11 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.10.0</junit.version>
     <jacoco.version>0.8.11</jacoco.version>
+    <!-- Propriedades do Sonar -->
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+    <sonar.projectKey>AlgoritmosTest</sonar.projectKey>
+    <sonar.projectName>AlgoritmosTest</sonar.projectName>
+    <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
   </properties>
 
   <dependencies>
@@ -54,8 +59,12 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.2</version>
+        <configuration>
+          <useSystemClassLoader>false</useSystemClassLoader>
+        </configuration>
       </plugin>
 
+      <!-- Plugin JaCoCo para cobertura -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -69,11 +78,12 @@
           </execution>
           <execution>
             <id>report</id>
-            <phase>test</phase>
+            <phase>prepare-package</phase>
             <goals>
               <goal>report</goal>
             </goals>
             <configuration>
+              <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
               <excludes>
                 <exclude>**/Algoritmos.class</exclude>
                 <exclude>**/Algoritmos$*.class</exclude>
@@ -107,6 +117,13 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+
+      <!-- Plugin SonarQube -->
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.10.0.2594</version>
       </plugin>
     </plugins>
   </build>

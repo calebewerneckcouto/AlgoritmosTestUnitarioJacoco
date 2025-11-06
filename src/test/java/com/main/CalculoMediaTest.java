@@ -10,7 +10,7 @@ class CalculoMediaTest {
 
 	
 	
-	  @Test
+	   @Test
 	    void instanciaDaClasseTest() {
 	        CalculoMedia instancia = new CalculoMedia();
 	        assertNotNull(instancia);
