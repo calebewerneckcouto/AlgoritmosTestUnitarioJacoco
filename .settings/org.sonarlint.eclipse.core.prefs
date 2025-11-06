@@ -2,3 +2,5 @@ autoEnabled=true
 bindingSuggestionsDisabled=false
 eclipse.preferences.version=1
 indexingBasedOnEclipsePlugIns=true
+projectKey=squ_54b660d06b29d303eb15d06e10b71a50a7dec29d
+serverId=sonar

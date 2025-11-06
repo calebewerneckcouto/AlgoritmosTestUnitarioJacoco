@@ -1,0 +1,6 @@
+projectKey=AlgoritmosTest
+serverUrl=http://localhost:9000
+serverVersion=9.9.4.87374
+dashboardUrl=http://localhost:9000/dashboard?id=AlgoritmosTest
+ceTaskId=AZpawjmK7rh79bOFdcrC
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AZpawjmK7rh79bOFdcrC
