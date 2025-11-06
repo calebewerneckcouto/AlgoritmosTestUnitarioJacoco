@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+AlgoritmosTest,com.main,Primo,0,46,0,12,0,12,0,9,0,3
+AlgoritmosTest,com.main,Algoritmos,972,0,52,0,259,0,49,0,17,0
+AlgoritmosTest,com.main,SegundoMaiorNumero,8,152,2,34,4,41,2,19,0,3
+AlgoritmosTest,com.main,PesquisaLinear,0,53,0,12,0,13,0,9,0,3
+AlgoritmosTest,com.main,ContadorOcorrencia,0,92,0,20,0,23,0,14,0,4
+AlgoritmosTest,com.main,Par,0,27,0,6,0,6,0,7,0,4
+AlgoritmosTest,com.main,FaltaUm,0,114,0,18,0,22,0,12,0,3
+AlgoritmosTest,com.main,SomaDois,0,121,0,18,0,17,0,12,0,3
+AlgoritmosTest,com.main,CalculoMedia,0,90,0,12,0,17,0,9,0,3
+AlgoritmosTest,com.main,Strings,0,128,0,20,0,27,0,14,0,4
+AlgoritmosTest,com.main,Fatorial,0,62,0,10,0,16,0,9,0,4

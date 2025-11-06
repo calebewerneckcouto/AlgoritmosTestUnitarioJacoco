@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SegundoMaiorNumero.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">AlgoritmosTest</a> &gt; <a href="index.source.html" class="el_package">com.main</a> &gt; <span class="el_source">SegundoMaiorNumero.java</span></div><h1>SegundoMaiorNumero.java</h1><pre class="source lang-java linenums">package com.main;
+
+<span class="fc" id="L3">public class SegundoMaiorNumero {</span>
+    
+  
+    public static int encontrarSegundoMaior(int[] numeros) {
+<span class="fc bfc" id="L7" title="All 2 branches covered.">        if (numeros == null) {</span>
+<span class="fc" id="L8">            throw new IllegalArgumentException(&quot;O array não pode ser nulo&quot;);</span>
+        }
+        
+<span class="fc bfc" id="L11" title="All 2 branches covered.">        if (numeros.length &lt; 2) {</span>
+<span class="fc" id="L12">            throw new IllegalArgumentException(&quot;O array deve ter pelo menos dois elementos&quot;);</span>
+        }
+        
+        // Inicializa com o primeiro elemento do array
+<span class="fc" id="L16">        int maior = numeros[0];</span>
+<span class="fc" id="L17">        int segundoMaior = Integer.MIN_VALUE;</span>
+<span class="fc" id="L18">        boolean encontrouSegundo = false;</span>
+        
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        for (int i = 1; i &lt; numeros.length; i++) {</span>
+<span class="fc" id="L21">            int numero = numeros[i];</span>
+            
+<span class="fc bfc" id="L23" title="All 2 branches covered.">            if (numero &gt; maior) {</span>
+<span class="fc" id="L24">                segundoMaior = maior;</span>
+<span class="fc" id="L25">                maior = numero;</span>
+<span class="fc" id="L26">                encontrouSegundo = true;</span>
+<span class="fc bfc" id="L27" title="All 4 branches covered.">            } else if (numero &gt; segundoMaior &amp;&amp; numero &lt; maior) {</span>
+<span class="fc" id="L28">                segundoMaior = numero;</span>
+<span class="fc" id="L29">                encontrouSegundo = true;</span>
+<span class="pc bpc" id="L30" title="1 of 4 branches missed.">            } else if (segundoMaior == Integer.MIN_VALUE &amp;&amp; numero &lt; maior) {</span>
+<span class="nc" id="L31">                segundoMaior = numero;</span>
+<span class="nc" id="L32">                encontrouSegundo = true;</span>
+            }
+        }
+        
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (!encontrouSegundo) {</span>
+<span class="fc" id="L37">            throw new IllegalArgumentException(&quot;Não existe segundo maior número (todos os números são iguais)&quot;);</span>
+        }
+        
+<span class="fc" id="L40">        return segundoMaior;</span>
+    }
+    
+  
+    public static double encontrarSegundoMaior(double[] numeros) {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (numeros == null) {</span>
+<span class="fc" id="L46">            throw new IllegalArgumentException(&quot;O array não pode ser nulo&quot;);</span>
+        }
+        
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (numeros.length &lt; 2) {</span>
+<span class="fc" id="L50">            throw new IllegalArgumentException(&quot;O array deve ter pelo menos dois elementos&quot;);</span>
+        }
+        
+        // Inicializa com o primeiro elemento do array
+<span class="fc" id="L54">        double maior = numeros[0];</span>
+<span class="fc" id="L55">        double segundoMaior = -Double.MAX_VALUE;</span>
+<span class="fc" id="L56">        boolean encontrouSegundo = false;</span>
+        
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        for (int i = 1; i &lt; numeros.length; i++) {</span>
+<span class="fc" id="L59">            double numero = numeros[i];</span>
+            
+<span class="fc bfc" id="L61" title="All 2 branches covered.">            if (numero &gt; maior) {</span>
+<span class="fc" id="L62">                segundoMaior = maior;</span>
+<span class="fc" id="L63">                maior = numero;</span>
+<span class="fc" id="L64">                encontrouSegundo = true;</span>
+<span class="fc bfc" id="L65" title="All 4 branches covered.">            } else if (numero &gt; segundoMaior &amp;&amp; numero &lt; maior) {</span>
+<span class="fc" id="L66">                segundoMaior = numero;</span>
+<span class="fc" id="L67">                encontrouSegundo = true;</span>
+<span class="pc bpc" id="L68" title="1 of 4 branches missed.">            } else if (segundoMaior == -Double.MAX_VALUE &amp;&amp; numero &lt; maior) {</span>
+<span class="nc" id="L69">                segundoMaior = numero;</span>
+<span class="nc" id="L70">                encontrouSegundo = true;</span>
+            }
+        }
+        
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (!encontrouSegundo) {</span>
+<span class="fc" id="L75">            throw new IllegalArgumentException(&quot;Não existe segundo maior número (todos os números são iguais)&quot;);</span>
+        }
+        
+<span class="fc" id="L78">        return segundoMaior;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
