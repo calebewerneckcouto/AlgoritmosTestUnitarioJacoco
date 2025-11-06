@@ -1,50 +1,47 @@
 package com.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ContadorOcorrencia {
     
+    private static final String NUMERO_PREFIX = "O número ";
     
-    public int contarOcorrencias(int[] vetor, int numero) {
+    public String verificarOcorrencias(int[] vetor, int numero) {
         if (vetor == null) {
-            return 0;
+            throw new IllegalArgumentException("O vetor não pode ser nulo");
         }
         
         int contador = 0;
-        for (int elemento : vetor) {
-            if (elemento == numero) {
+        for (int valor : vetor) {
+            if (valor == numero) {
                 contador++;
             }
         }
-        return contador;
-    }
-    
-    
-    public String verificarOcorrencias(int[] vetor, int numero) {
-        int quantidade = contarOcorrencias(vetor, numero);
         
-        if (quantidade == 0) {
-            return "O número " + numero + " não foi encontrado no vetor";
-        } else if (quantidade == 1) {
-            return "O número " + numero + " aparece 1 vez no vetor";
-        } else {
-            return "O número " + numero + " aparece " + quantidade + " vezes no vetor";
+        if (contador == 0) {
+            return String.format("%s%d não foi encontrado no vetor", NUMERO_PREFIX, numero);
         }
+        
+        return String.format("%s%d aparece %d vez(es) no vetor", NUMERO_PREFIX, numero, contador);
     }
-    
     
     public String encontrarPosicoes(int[] vetor, int numero) {
-        if (vetor == null || contarOcorrencias(vetor, numero) == 0) {
-            return "Número não encontrado";
+        if (vetor == null) {
+            throw new IllegalArgumentException("O vetor não pode ser nulo");
         }
         
-        StringBuilder posicoes = new StringBuilder();
+        List<Integer> posicoes = new ArrayList<>();
         for (int i = 0; i < vetor.length; i++) {
             if (vetor[i] == numero) {
-                if (posicoes.length() > 0) {
-                    posicoes.append(", ");
-                }
-                posicoes.append(i);
+                posicoes.add(i);
             }
         }
-        return "Posições: [" + posicoes.toString() + "]";
+        
+        if (posicoes.isEmpty()) {
+            return String.format("%s%d não foi encontrado no vetor", NUMERO_PREFIX, numero);
+        }
+        
+        return String.format("%s%d aparece nas posições: %s", NUMERO_PREFIX, numero, posicoes);
     }
 }

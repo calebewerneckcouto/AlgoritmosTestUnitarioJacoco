@@ -1,32 +1,22 @@
 package com.main;
 
-import java.util.List;
-
 public class PesquisaLinear {
     
-    public static int pesquisar(int[] lista, int numeroProcurado) {
-        if (lista == null) {
-            throw new IllegalArgumentException("A lista não pode ser nula");
-        }
-        
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i] == numeroProcurado) {
-                return i;
-            }
-        }
-        return -1;
+    private PesquisaLinear() {
+        // Construtor privado para evitar instanciação
     }
     
-    public static int pesquisar(List<Integer> lista, int numeroProcurado) {
-        if (lista == null) {
-            throw new IllegalArgumentException("A lista não pode ser nula");
+    public static int pesquisar(int[] array, int elemento) {
+        if (array == null) {
+            throw new IllegalArgumentException("O array não pode ser nulo");
         }
         
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i) == numeroProcurado) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == elemento) {
                 return i;
             }
         }
+        
         return -1;
     }
 }

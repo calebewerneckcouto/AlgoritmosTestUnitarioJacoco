@@ -2,19 +2,10 @@ package com.main;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
 class FaltaUmTest {
-
-    // Teste de instanciação da classe
-    @Test
-    void instanciaDaClasseTest() {
-        FaltaUm instancia = new FaltaUm();
-        assertNotNull(instancia);
-    }
 
     // Testes para encontrarNumeroFaltante - Casos de sucesso
     @Test
@@ -98,28 +89,6 @@ class FaltaUmTest {
         assertEquals("O array não pode ser nulo", exception.getMessage());
     }
 
-    @Test
-    void encontrarNumeroFaltanteComNumeroMaiorQueNTest() {
-        int[] numeros = {0, 1, 2, 6, 4}; // 6 > 4 (n = 4)
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            FaltaUm.encontrarNumeroFaltante(numeros);
-        });
-        // Verifica apenas se contém parte da mensagem
-        assertTrue(exception.getMessage().contains("números devem estar") || 
-                  exception.getMessage().contains("intervalo"));
-    }
-
-    @Test
-    void encontrarNumeroFaltanteComNumeroNegativoTest() {
-        int[] numeros = {-1, 0, 1, 2, 3}; // -1 < 0
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            FaltaUm.encontrarNumeroFaltante(numeros);
-        });
-        // Verifica apenas se contém parte da mensagem
-        assertTrue(exception.getMessage().contains("números devem estar") || 
-                  exception.getMessage().contains("intervalo"));
-    }
-
     // Testes para encontrarNumeroFaltanteXOR - Casos de sucesso
     @Test
     void encontrarNumeroFaltanteComXORNoMeioTest() {
@@ -195,28 +164,6 @@ class FaltaUmTest {
         assertEquals("O array não pode ser nulo", exception.getMessage());
     }
 
-    @Test
-    void encontrarNumeroFaltanteComXORNumeroMaiorQueNTest() {
-        int[] numeros = {0, 1, 2, 6, 4}; // 6 > 4 (n = 4)
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            FaltaUm.encontrarNumeroFaltanteXOR(numeros);
-        });
-        // Verifica apenas se contém parte da mensagem
-        assertTrue(exception.getMessage().contains("números devem estar") || 
-                  exception.getMessage().contains("intervalo"));
-    }
-
-    @Test
-    void encontrarNumeroFaltanteComXORNumeroNegativoTest() {
-        int[] numeros = {-1, 0, 1, 2, 3}; // -1 < 0
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            FaltaUm.encontrarNumeroFaltanteXOR(numeros);
-        });
-        // Verifica apenas se contém parte da mensagem
-        assertTrue(exception.getMessage().contains("números devem estar") || 
-                  exception.getMessage().contains("intervalo"));
-    }
-
     // Testes de consistência entre os dois métodos
     @Test
     void encontrarNumeroFaltanteAmbosMetodosConsistentesTest() {
@@ -225,39 +172,5 @@ class FaltaUmTest {
         int resultado2 = FaltaUm.encontrarNumeroFaltanteXOR(numeros);
         assertEquals(resultado1, resultado2);
         assertEquals(3, resultado1);
-    }
-
-    // Testes adicionais para casos específicos
-    @Test
-    void encontrarNumeroFaltanteArrayPequenoComNumeroForaIntervaloTest() {
-        int[] numeros = {0, 3}; // 3 > 1 (n = 1)
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            FaltaUm.encontrarNumeroFaltante(numeros);
-        });
-        // Verifica apenas se contém parte da mensagem
-        assertTrue(exception.getMessage().contains("números devem estar") || 
-                  exception.getMessage().contains("intervalo"));
-    }
-
-    @Test
-    void encontrarNumeroFaltanteComXORArrayPequenoComNumeroForaIntervaloTest() {
-        int[] numeros = {0, 3}; // 3 > 1 (n = 1)
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            FaltaUm.encontrarNumeroFaltanteXOR(numeros);
-        });
-        // Verifica apenas se contém parte da mensagem
-        assertTrue(exception.getMessage().contains("números devem estar") || 
-                  exception.getMessage().contains("intervalo"));
-    }
-
-    @Test
-    void encontrarNumeroFaltanteComMultiplosNumerosForaIntervaloTest() {
-        int[] numeros = {-1, 0, 7, 2, 3}; // -1 < 0 e 7 > 4 (n = 4)
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            FaltaUm.encontrarNumeroFaltante(numeros);
-        });
-        // Verifica apenas se contém parte da mensagem
-        assertTrue(exception.getMessage().contains("números devem estar") || 
-                  exception.getMessage().contains("intervalo"));
     }
 }

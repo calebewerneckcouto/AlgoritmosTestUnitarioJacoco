@@ -3,41 +3,51 @@ package com.main;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class Algoritmos {
+    
+    private static final Logger logger = Logger.getLogger(Algoritmos.class.getName());
+    private static final String OS_NAME = "os.name";
+    private static final String WINDOWS = "windows";
+    private static final String CMD_EXE = "cmd.exe";
+    private static final String DIGITE_NUMERO = "Digite um número: ";
+    private static final String ELEMENTO = "Elemento ";
+    private static final String ERRO = "Erro: ";
+    private static final String ARRAY = "Array: ";
     
     private static Par par = new Par();
     private static Primo primo = new Primo();
     private static Fatorial fatorial = new Fatorial();
     private static ContadorOcorrencia contador = new ContadorOcorrencia();
     private static Strings strings = new Strings();
-    private static CalculoMedia calculoMedia = new CalculoMedia();
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
         while (true) {
-            System.out.println("\n=== DEMONSTRAÇÃO DOS ALGORITMOS ===");
-            System.out.println("1 - Verificar se número é par");
-            System.out.println("2 - Verificar se número é primo");
-            System.out.println("3 - Calcular fatorial");
-            System.out.println("4 - Contador de ocorrências");
-            System.out.println("5 - Pesquisa linear");
-            System.out.println("6 - Inversão de String");
-            System.out.println("7 - Verificar anagrama");
-            System.out.println("8 - Cálculo da média");
-            System.out.println("9 - Segundo maior número");
-            System.out.println("10 - Soma de dois números");
-            System.out.println("11 - Verificar palíndromo");
-            System.out.println("12 - Encontrar número faltante");
-            System.out.println("13 - Gerar e abrir relatório de cobertura de testes");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha uma opção: ");
+            logger.info("\n=== DEMONSTRAÇÃO DOS ALGORITMOS ===");
+            logger.info("1 - Verificar se número é par");
+            logger.info("2 - Verificar se número é primo");
+            logger.info("3 - Calcular fatorial");
+            logger.info("4 - Contador de ocorrências");
+            logger.info("5 - Pesquisa linear");
+            logger.info("6 - Inversão de String");
+            logger.info("7 - Verificar anagrama");
+            logger.info("8 - Cálculo da média");
+            logger.info("9 - Segundo maior número");
+            logger.info("10 - Soma de dois números");
+            logger.info("11 - Verificar palíndromo");
+            logger.info("12 - Encontrar número faltante");
+            logger.info("13 - Gerar e abrir relatório de cobertura de testes");
+            logger.info("0 - Sair");
+            logger.info("Escolha uma opção: ");
             
             int opcao = scanner.nextInt();
             
             if (opcao == 0) {
-                System.out.println("Encerrando programa...");
+                logger.info("Encerrando programa...");
                 break;
             }
             
@@ -82,7 +92,7 @@ public class Algoritmos {
                     gerarEAbrirRelatorioCobertura();
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    logger.warning(() -> "Opção inválida selecionada: " + opcao);
             }
         }
         
@@ -90,15 +100,14 @@ public class Algoritmos {
     }
     
     private static void gerarEAbrirRelatorioCobertura() {
-        System.out.println("=== GERANDO E ABRINDO RELATÓRIO DE COBERTURA ===");
+        logger.info("=== GERANDO E ABRINDO RELATÓRIO DE COBERTURA ===");
         
         try {
-            // Primeiro: Tentar compilar e testar
-            System.out.println("🔄 Compilando e executando testes...");
+            logger.info("Compilando e executando testes...");
             ProcessBuilder compileBuilder = new ProcessBuilder();
             
-            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-                compileBuilder.command("cmd.exe", "/c", "mvn", "clean", "compile", "test");
+            if (System.getProperty(OS_NAME).toLowerCase().contains(WINDOWS)) {
+                compileBuilder.command(CMD_EXE, "/c", "mvn", "clean", "compile", "test");
             } else {
                 compileBuilder.command("bash", "-c", "mvn clean compile test");
             }
@@ -108,12 +117,11 @@ public class Algoritmos {
             int compileExitCode = compileProcess.waitFor();
             
             if (compileExitCode != 0) {
-                System.out.println("❌ Erro na compilação/testes. Tentando apenas testes...");
+                logger.warning("Erro na compilação/testes. Tentando apenas testes...");
                 
-                // Tentar apenas os testes se a compilação falhar
                 ProcessBuilder testBuilder = new ProcessBuilder();
-                if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-                    testBuilder.command("cmd.exe", "/c", "mvn", "test");
+                if (System.getProperty(OS_NAME).toLowerCase().contains(WINDOWS)) {
+                    testBuilder.command(CMD_EXE, "/c", "mvn", "test");
                 } else {
                     testBuilder.command("bash", "-c", "mvn test");
                 }
@@ -123,19 +131,18 @@ public class Algoritmos {
                 int testExitCode = testProcess.waitFor();
                 
                 if (testExitCode != 0) {
-                    System.out.println("❌ Testes também falharam. Verifique o código.");
+                    logger.severe("Testes também falharam. Verifique o código.");
                     return;
                 }
             }
             
-            System.out.println("✅ Compilação e testes executados com sucesso!");
+            logger.info("Compilação e testes executados com sucesso!");
             
-            // Gerar relatório JaCoCo
-            System.out.println("🔄 Gerando relatório de cobertura...");
+            logger.info("Gerando relatório de cobertura...");
             ProcessBuilder reportBuilder = new ProcessBuilder();
             
-            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-                reportBuilder.command("cmd.exe", "/c", "mvn", "jacoco:report");
+            if (System.getProperty(OS_NAME).toLowerCase().contains(WINDOWS)) {
+                reportBuilder.command(CMD_EXE, "/c", "mvn", "jacoco:report");
             } else {
                 reportBuilder.command("bash", "-c", "mvn jacoco:report");
             }
@@ -145,44 +152,44 @@ public class Algoritmos {
             int reportExitCode = reportProcess.waitFor();
             
             if (reportExitCode != 0) {
-                System.out.println("❌ Erro ao gerar relatório.");
+                logger.severe("Erro ao gerar relatório.");
                 return;
             }
             
-            System.out.println("✅ Relatório gerado com sucesso!");
+            logger.info("Relatório gerado com sucesso!");
             
-            // Abrir o relatório
             abrirRelatorioNoNavegador();
             
-        } catch (IOException | InterruptedException e) {
-            System.out.println("❌ Erro durante o processo: " + e.getMessage());
-            System.out.println("💡 Execute manualmente no terminal:");
-            System.out.println("   mvn clean compile test jacoco:report");
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e, () -> "Erro durante o processo: " + e.getMessage());
+            logger.info("Execute manualmente no terminal: mvn clean compile test jacoco:report");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            logger.log(Level.SEVERE, e, () -> "Processo interrompido: " + e.getMessage());
         }
     }
     
-    private static void abrirRelatorioNoNavegador() {
+    private static void abrirRelatorioNoNavegador() throws InterruptedException {
         try {
             String caminhoRelatorio = "target/site/jacoco/index.html";
-            String caminhoAbsoluto = System.getProperty("user.dir") + "\\" + caminhoRelatorio;
+            String caminhoAbsoluto = String.format("%s\\%s", System.getProperty("user.dir"), caminhoRelatorio);
             
-            System.out.println("📁 Caminho do relatório: " + caminhoAbsoluto);
+            logger.info(() -> String.format("Caminho do relatório: %s", caminhoAbsoluto));
             
-            // Verificar se o arquivo foi gerado
             java.io.File arquivo = new java.io.File(caminhoAbsoluto);
             if (!arquivo.exists()) {
-                System.out.println("❌ Relatório não foi gerado!");
-                System.out.println("💡 Tente executar manualmente: mvn test jacoco:report");
+                logger.severe("Relatório não foi gerado!");
+                logger.info("Tente executar manualmente: mvn test jacoco:report");
                 return;
             }
             
-            System.out.println("🔄 Abrindo relatório no navegador...");
+            logger.info("Abrindo relatório no navegador...");
             
             ProcessBuilder browserBuilder = new ProcessBuilder();
             
-            if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-                browserBuilder.command("cmd.exe", "/c", "start", "", caminhoAbsoluto);
-            } else if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            if (System.getProperty(OS_NAME).toLowerCase().contains(WINDOWS)) {
+                browserBuilder.command(CMD_EXE, "/c", "start", "", caminhoAbsoluto);
+            } else if (System.getProperty(OS_NAME).toLowerCase().contains("mac")) {
                 browserBuilder.command("open", caminhoAbsoluto);
             } else {
                 browserBuilder.command("xdg-open", caminhoAbsoluto);
@@ -190,213 +197,221 @@ public class Algoritmos {
             
             Process browserProcess = browserBuilder.start();
             
-            // Para Windows, não esperamos o processo terminar
-            if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
+            if (!System.getProperty(OS_NAME).toLowerCase().contains(WINDOWS)) {
                 int browserExitCode = browserProcess.waitFor();
                 if (browserExitCode == 0) {
-                    System.out.println("✅ Relatório aberto com sucesso!");
+                    logger.info("Relatório aberto com sucesso!");
                 } else {
-                    System.out.println("❌ Erro ao abrir relatório. Código: " + browserExitCode);
+                    logger.severe(() -> String.format("Erro ao abrir relatório. Código: %d", browserExitCode));
                 }
             } else {
-                Thread.sleep(2000); // Dar tempo para o navegador abrir
-                System.out.println("✅ Relatório deve estar aberto no navegador!");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+                logger.info("Relatório deve estar aberto no navegador!");
             }
             
-        } catch (IOException | InterruptedException e) {
-            System.out.println("❌ Erro ao abrir relatório: " + e.getMessage());
-            System.out.println("📋 Abra manualmente: target/site/jacoco/index.html");
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, e, () -> "Erro ao abrir relatório: " + e.getMessage());
+            logger.info("Abra manualmente: target/site/jacoco/index.html");
         }
     }
     
-    // Os demais métodos permanecem iguais...
     private static void demonstrarPar(Scanner scanner) {
-        System.out.print("Digite um número: ");
+        logger.info(DIGITE_NUMERO);
         int numero = scanner.nextInt();
-        System.out.println(par.verificarParImpar(numero));
+        logger.info(par.verificarParImpar(numero));
     }
     
     private static void demonstrarPrimo(Scanner scanner) {
-        System.out.print("Digite um número: ");
+        logger.info(DIGITE_NUMERO);
         int numero = scanner.nextInt();
-        System.out.println(primo.verificarPrimo(numero));
+        logger.info(primo.verificarPrimo(numero));
     }
     
     private static void demonstrarFatorial(Scanner scanner) {
-        System.out.print("Digite um número: ");
+        logger.info(DIGITE_NUMERO);
         int numero = scanner.nextInt();
-        System.out.println(fatorial.verificarFatorial(numero));
+        logger.info(fatorial.verificarFatorial(numero));
     }
     
     private static void demonstrarContadorOcorrencias(Scanner scanner) {
-        System.out.print("Digite o tamanho do vetor: ");
+        logger.info("Digite o tamanho do vetor: ");
         int tamanho = scanner.nextInt();
         int[] vetor = new int[tamanho];
         
-        System.out.println("Digite os elementos do vetor:");
+        logger.info("Digite os elementos do vetor:");
         for (int i = 0; i < tamanho; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
+            final int currentIndex = i;
+            logger.info(() -> String.format("%s%d: ", ELEMENTO, (currentIndex + 1)));
             vetor[i] = scanner.nextInt();
         }
         
-        System.out.print("Digite o número a ser contado: ");
+        logger.info("Digite o número a ser contado: ");
         int numero = scanner.nextInt();
         
-        System.out.println(contador.verificarOcorrencias(vetor, numero));
-        System.out.println(contador.encontrarPosicoes(vetor, numero));
+        logger.info(contador.verificarOcorrencias(vetor, numero));
+        logger.info(contador.encontrarPosicoes(vetor, numero));
     }
     
     private static void demonstrarPesquisaLinear(Scanner scanner) {
-        System.out.print("Digite o tamanho da lista: ");
+        logger.info("Digite o tamanho da lista: ");
         int tamanho = scanner.nextInt();
         int[] lista = new int[tamanho];
         
-        System.out.println("Digite os elementos da lista:");
+        logger.info("Digite os elementos da lista:");
         for (int i = 0; i < tamanho; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
+            final int currentIndex = i;
+            logger.info(() -> String.format("%s%d: ", ELEMENTO, (currentIndex + 1)));
             lista[i] = scanner.nextInt();
         }
         
-        System.out.print("Digite o número a ser procurado: ");
+        logger.info("Digite o número a ser procurado: ");
         int numero = scanner.nextInt();
         
         try {
             int indice = PesquisaLinear.pesquisar(lista, numero);
             if (indice != -1) {
-                System.out.println("Número encontrado no índice: " + indice);
+                logger.info(() -> String.format("Número encontrado no índice: %d", indice));
             } else {
-                System.out.println("Número não encontrado na lista");
+                logger.info("Número não encontrado na lista");
             }
         } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
+            logger.info(() -> String.format("%s%s", ERRO, e.getMessage()));
         }
     }
     
     private static void demonstrarInversaoString(Scanner scanner) {
-        scanner.nextLine(); // Limpar buffer
-        System.out.print("Digite uma string: ");
+        scanner.nextLine();
+        logger.info("Digite uma string: ");
         String texto = scanner.nextLine();
         
         try {
             String invertida = strings.inverterString(texto);
-            System.out.println("String original: " + texto);
-            System.out.println("String invertida: " + invertida);
+            logger.info(() -> String.format("String original: %s", texto));
+            logger.info(() -> String.format("String invertida: %s", invertida));
         } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
+            logger.info(() -> String.format("%s%s", ERRO, e.getMessage()));
         }
     }
     
     private static void demonstrarAnagrama(Scanner scanner) {
-        scanner.nextLine(); // Limpar buffer
-        System.out.print("Digite a primeira string: ");
+        scanner.nextLine();
+        logger.info("Digite a primeira string: ");
         String str1 = scanner.nextLine();
         
-        System.out.print("Digite a segunda string: ");
+        logger.info("Digite a segunda string: ");
         String str2 = scanner.nextLine();
         
         boolean resultado = strings.isAnagrama(str1, str2);
-        System.out.println("As strings \"" + str1 + "\" e \"" + str2 + "\" são anagramas? " + resultado);
+        logger.info(() -> String.format("As strings \"%s\" e \"%s\" são anagramas? %s", str1, str2, resultado));
     }
     
     private static void demonstrarCalculoMedia(Scanner scanner) {
-        System.out.print("Digite o tamanho do vetor: ");
+        logger.info("Digite o tamanho do vetor: ");
         int tamanho = scanner.nextInt();
         double[] vetor = new double[tamanho];
         
-        System.out.println("Digite os elementos do vetor:");
+        logger.info("Digite os elementos do vetor:");
         for (int i = 0; i < tamanho; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
+            final int currentIndex = i;
+            logger.info(() -> String.format("%s%d: ", ELEMENTO, (currentIndex + 1)));
             vetor[i] = scanner.nextDouble();
         }
         
         try {
             double media = CalculoMedia.calcularMedia(vetor);
-            System.out.println("Vetor: " + Arrays.toString(vetor));
-            System.out.println("Média: " + media);
+            logger.info(() -> String.format("%s%s", ARRAY, Arrays.toString(vetor)));
+            logger.info(() -> String.format("Média: %s", media));
         } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
+            logger.info(() -> String.format("%s%s", ERRO, e.getMessage()));
         }
     }
     
     private static void demonstrarSegundoMaior(Scanner scanner) {
-        System.out.print("Digite o tamanho do array: ");
+        logger.info("Digite o tamanho do array: ");
         int tamanho = scanner.nextInt();
         int[] numeros = new int[tamanho];
         
-        System.out.println("Digite os elementos do array:");
+        logger.info("Digite os elementos do array:");
         for (int i = 0; i < tamanho; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
+            final int currentIndex = i;
+            logger.info(() -> String.format("%s%d: ", ELEMENTO, (currentIndex + 1)));
             numeros[i] = scanner.nextInt();
         }
         
         try {
             int segundoMaior = SegundoMaiorNumero.encontrarSegundoMaior(numeros);
-            System.out.println("Array: " + Arrays.toString(numeros));
-            System.out.println("Segundo maior número: " + segundoMaior);
+            logger.info(() -> String.format("%s%s", ARRAY, Arrays.toString(numeros)));
+            logger.info(() -> String.format("Segundo maior número: %d", segundoMaior));
         } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
+            logger.info(() -> String.format("%s%s", ERRO, e.getMessage()));
         }
     }
     
     private static void demonstrarSomaDois(Scanner scanner) {
-        System.out.print("Digite o tamanho do array: ");
+        logger.info("Digite o tamanho do array: ");
         int tamanho = scanner.nextInt();
         int[] numeros = new int[tamanho];
         
-        System.out.println("Digite os elementos do array:");
+        logger.info("Digite os elementos do array:");
         for (int i = 0; i < tamanho; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
+            final int currentIndex = i;
+            logger.info(() -> String.format("%s%d: ", ELEMENTO, (currentIndex + 1)));
             numeros[i] = scanner.nextInt();
         }
         
-        System.out.print("Digite o valor alvo da soma: ");
+        logger.info("Digite o valor alvo da soma: ");
         int alvo = scanner.nextInt();
         
         try {
             int[] indices = SomaDois.encontrarIndicesSoma(numeros, alvo);
-            System.out.println("Array: " + Arrays.toString(numeros));
-            System.out.println("Alvo: " + alvo);
-            System.out.println("Índices: " + Arrays.toString(indices));
-            System.out.println("Números: " + numeros[indices[0]] + " + " + numeros[indices[1]] + " = " + alvo);
+            logger.info(() -> String.format("%s%s", ARRAY, Arrays.toString(numeros)));
+            logger.info(() -> String.format("Alvo: %d", alvo));
+            logger.info(() -> String.format("Índices: %s", Arrays.toString(indices)));
+            logger.info(() -> String.format("Números: %d + %d = %d", 
+                numeros[indices[0]], numeros[indices[1]], alvo));
         } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
+            logger.info(() -> String.format("%s%s", ERRO, e.getMessage()));
         }
     }
     
     private static void demonstrarPalindromo(Scanner scanner) {
-        scanner.nextLine(); // Limpar buffer
-        System.out.print("Digite uma string: ");
+        scanner.nextLine();
+        logger.info("Digite uma string: ");
         String texto = scanner.nextLine();
         
         try {
             boolean resultado = strings.isPalindromo(texto);
-            System.out.println("A string \"" + texto + "\" é um palíndromo? " + resultado);
+            logger.info(() -> String.format("A string \"%s\" é um palíndromo? %s", texto, resultado));
         } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
+            logger.info(() -> String.format("%s%s", ERRO, e.getMessage()));
         }
     }
     
     private static void demonstrarFaltaUm(Scanner scanner) {
-        System.out.print("Digite o tamanho do array (n): ");
+        logger.info("Digite o tamanho do array (n): ");
         int n = scanner.nextInt();
         int[] numeros = new int[n];
         
-        System.out.println("Digite " + n + " números no intervalo [0, " + (n) + "] (um número deve estar faltando):");
+        logger.info(() -> String.format("Digite %d números no intervalo [0, %d] (um número deve estar faltando):", n, n));
         for (int i = 0; i < n; i++) {
-            System.out.print("Elemento " + (i + 1) + ": ");
+            final int currentIndex = i;
+            logger.info(() -> String.format("%s%d: ", ELEMENTO, (currentIndex + 1)));
             numeros[i] = scanner.nextInt();
         }
         
         try {
             int faltante = FaltaUm.encontrarNumeroFaltante(numeros);
-            System.out.println("Array: " + Arrays.toString(numeros));
-            System.out.println("Número faltante: " + faltante);
+            logger.info(() -> String.format("%s%s", ARRAY, Arrays.toString(numeros)));
+            logger.info(() -> String.format("Número faltante: %d", faltante));
             
-            // Demonstração com XOR também
             int faltanteXOR = FaltaUm.encontrarNumeroFaltanteXOR(numeros);
-            System.out.println("Número faltante (XOR): " + faltanteXOR);
+            logger.info(() -> String.format("Número faltante (XOR): %d", faltanteXOR));
         } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
+            logger.info(() -> String.format("%s%s", ERRO, e.getMessage()));
         }
     }
 }

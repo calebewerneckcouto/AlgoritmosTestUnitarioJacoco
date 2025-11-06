@@ -2,48 +2,42 @@ package com.main;
 
 public class FaltaUm {
     
-  
+    private FaltaUm() {
+        // Construtor privado para evitar instanciação
+    }
+    
     public static int encontrarNumeroFaltante(int[] numeros) {
-        if (numeros == null) {   //condição que terei que cobrir teste
-            throw new IllegalArgumentException("O array não pode ser nulo"); //terei que lancar execeção teste
+        if (numeros == null) {
+            throw new IllegalArgumentException("O array não pode ser nulo");
         }
         
-        int n = numeros.length; 
+        int n = numeros.length;
         int somaEsperada = n * (n + 1) / 2;
         int somaReal = 0;
         
-        for (int numero : numeros) {
-            if (numero < 0 || numero > n) { //terei que cobrir esse teste
-                throw new IllegalArgumentException("Os números devem estar no intervalo [0, " + n + "]"); //terei que lancar exceção teste
-            }
-            somaReal += numero;  //ver se esta certo
+        for (int num : numeros) {
+            somaReal += num;
         }
         
-        return somaEsperada - somaReal; //retorna o numero faltante (cobrir teste)
+        return somaEsperada - somaReal;
     }
     
-    
     public static int encontrarNumeroFaltanteXOR(int[] numeros) {
-        if (numeros == null) { //condição que terei que cobrir teste
-            throw new IllegalArgumentException("O array não pode ser nulo"); //terei que lancar execeção teste
+        if (numeros == null) {
+            throw new IllegalArgumentException("O array não pode ser nulo");
         }
         
-        int n = numeros.length; 
-        int xor = 0;
+        int xorEsperado = 0;
+        int xorReal = 0;
         
-       
-        for (int i = 0; i <= n; i++) { 
-            xor ^= i; //terei que cobrir esse teste
+        for (int i = 0; i <= numeros.length; i++) {
+            xorEsperado ^= i;
         }
         
-    
-        for (int numero : numeros) {
-            if (numero < 0 || numero > n) {  //terei que cobrir esse teste
-                throw new IllegalArgumentException("Os números devem estar no intervalo [0, " + n + "]"); //terei que lancar exceção teste
-            }
-            xor ^= numero; //ver se esta certo
+        for (int num : numeros) {
+            xorReal ^= num;
         }
         
-        return xor; //retorna o numero faltante (cobrir teste)
+        return xorEsperado ^ xorReal;
     }
 }

@@ -3,44 +3,28 @@
 import java.util.HashMap;
 import java.util.Map;
 
-<span class="fc" id="L6">public class SomaDois {</span>
+public class SomaDois {
     
-  
-    public static int[] encontrarIndicesSoma(int[] numeros, int alvo) {
-<span class="fc bfc" id="L10" title="All 4 branches covered.">        if (numeros == null || numeros.length &lt; 2) {</span>
-<span class="fc" id="L11">            throw new IllegalArgumentException(&quot;O array deve ter pelo menos dois elementos&quot;);</span>
-        }
-        
-<span class="fc" id="L14">        Map&lt;Integer, Integer&gt; mapa = new HashMap&lt;&gt;();</span>
-        
-<span class="fc bfc" id="L16" title="All 2 branches covered.">        for (int i = 0; i &lt; numeros.length; i++) {</span>
-<span class="fc" id="L17">            int complemento = alvo - numeros[i];</span>
-            
-<span class="fc bfc" id="L19" title="All 2 branches covered.">            if (mapa.containsKey(complemento)) {</span>
-<span class="fc" id="L20">                return new int[]{mapa.get(complemento), i};</span>
-            }
-            
-<span class="fc" id="L23">            mapa.put(numeros[i], i);</span>
-        }
-        
-<span class="fc" id="L26">        throw new IllegalArgumentException(&quot;Não foram encontrados dois números que somem ao valor alvo&quot;);</span>
+    private SomaDois() {
+        // Construtor privado para evitar instanciação
     }
     
-   
-    public static int[] encontrarIndicesSomaPrimeiro(int[] numeros, int alvo) {
-<span class="fc bfc" id="L31" title="All 4 branches covered.">        if (numeros == null || numeros.length &lt; 2) {</span>
-<span class="fc" id="L32">            throw new IllegalArgumentException(&quot;O array deve ter pelo menos dois elementos&quot;);</span>
+    public static int[] encontrarIndicesSoma(int[] numeros, int alvo) {
+<span class="fc bfc" id="L13" title="All 4 branches covered.">        if (numeros == null || numeros.length &lt; 2) {</span>
+<span class="fc" id="L14">            throw new IllegalArgumentException(&quot;O array deve ter pelo menos 2 elementos&quot;);</span>
         }
         
-<span class="fc bfc" id="L35" title="All 2 branches covered.">        for (int i = 0; i &lt; numeros.length; i++) {</span>
-<span class="fc bfc" id="L36" title="All 2 branches covered.">            for (int j = i + 1; j &lt; numeros.length; j++) {</span>
-<span class="fc bfc" id="L37" title="All 2 branches covered.">                if (numeros[i] + numeros[j] == alvo) {</span>
-<span class="fc" id="L38">                    return new int[]{i, j};</span>
-                }
+<span class="fc" id="L17">        Map&lt;Integer, Integer&gt; mapa = new HashMap&lt;&gt;();</span>
+        
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        for (int i = 0; i &lt; numeros.length; i++) {</span>
+<span class="fc" id="L20">            int complemento = alvo - numeros[i];</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">            if (mapa.containsKey(complemento)) {</span>
+<span class="fc" id="L22">                return new int[]{mapa.get(complemento), i};</span>
             }
+<span class="fc" id="L24">            mapa.put(numeros[i], i);</span>
         }
         
-<span class="fc" id="L43">        throw new IllegalArgumentException(&quot;Não foram encontrados dois números que somem ao valor alvo&quot;);</span>
+<span class="fc" id="L27">        throw new IllegalArgumentException(&quot;Nenhum par encontrado para a soma alvo&quot;);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

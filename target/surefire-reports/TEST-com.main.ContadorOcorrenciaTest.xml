@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.main.ContadorOcorrenciaTest" time="0.27" tests="21" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.main.ContadorOcorrenciaTest" time="0.166" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
-    <property name="sonar.login" value="admin"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.class.path" value="C:\Users\WINDOWS 11\.m2\repository\org\apache\maven\surefire\surefire-booter\3.2.2\surefire-booter-3.2.2.jar;C:\Users\WINDOWS 11\.m2\repository\org\apache\maven\surefire\surefire-api\3.2.2\surefire-api-3.2.2.jar;C:\Users\WINDOWS 11\.m2\repository\org\apache\maven\surefire\surefire-logger-api\3.2.2\surefire-logger-api-3.2.2.jar;C:\Users\WINDOWS 11\.m2\repository\org\apache\maven\surefire\surefire-shared-utils\3.2.2\surefire-shared-utils-3.2.2.jar;C:\Users\WINDOWS 11\.m2\repository\org\apache\maven\surefire\surefire-extensions-spi\3.2.2\surefire-extensions-spi-3.2.2.jar;C:\Users\WINDOWS 11\eclipse-workspace\meu-projeto\target\test-classes;C:\Users\WINDOWS 11\eclipse-workspace\meu-projeto\target\classes;C:\Users\WINDOWS 11\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\mockito\mockito-core\5.8.0\mockito-core-5.8.0.jar;C:\Users\WINDOWS 11\.m2\repository\net\bytebuddy\byte-buddy\1.14.10\byte-buddy-1.14.10.jar;C:\Users\WINDOWS 11\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.10\byte-buddy-agent-1.14.10.jar;C:\Users\WINDOWS 11\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\WINDOWS 11\.m2\repository\org\mockito\mockito-junit-jupiter\5.8.0\mockito-junit-jupiter-5.8.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\apache\maven\surefire\surefire-junit-platform\3.2.2\surefire-junit-platform-3.2.2.jar;C:\Users\WINDOWS 11\.m2\repository\org\apache\maven\surefire\common-java5\3.2.2\common-java5-3.2.2.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\platform\junit-platform-launcher\1.10.0\junit-platform-launcher-1.10.0.jar"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
@@ -15,9 +14,8 @@
     <property name="java.vm.specification.version" value="17"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="BR"/>
-    <property name="sonar.password" value="cwc3d14694899"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\WINDOWS 11\AppData\Local\Temp\surefire130043539419825818 2025-11-06T15-40-43_441-jvmRun1 surefire-20251106154043877_1tmp surefire_0-20251106154043877_2tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\WINDOWS 11\AppData\Local\Temp\surefire15847663053121687520 2025-11-06T16-43-36_745-jvmRun1 surefire-20251106164337610_1tmp surefire_0-20251106164337610_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\WINDOWS 11\eclipse-workspace\meu-projeto\target\test-classes;C:\Users\WINDOWS 11\eclipse-workspace\meu-projeto\target\classes;C:\Users\WINDOWS 11\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;C:\Users\WINDOWS 11\.m2\repository\org\mockito\mockito-core\5.8.0\mockito-core-5.8.0.jar;C:\Users\WINDOWS 11\.m2\repository\net\bytebuddy\byte-buddy\1.14.10\byte-buddy-1.14.10.jar;C:\Users\WINDOWS 11\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.10\byte-buddy-agent-1.14.10.jar;C:\Users\WINDOWS 11\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\WINDOWS 11\.m2\repository\org\mockito\mockito-junit-jupiter\5.8.0\mockito-junit-jupiter-5.8.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -57,25 +55,20 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="contarOcorrenciasVetorGrandeTest" classname="com.main.ContadorOcorrenciaTest" time="0.021"/>
-  <testcase name="contarOcorrenciasNumeroAusenteTest" classname="com.main.ContadorOcorrenciaTest" time="0.002"/>
-  <testcase name="encontrarPosicoesPosicoesEspalhadasTest" classname="com.main.ContadorOcorrenciaTest" time="0.062"/>
-  <testcase name="contarOcorrenciasNumeroUnicoTest" classname="com.main.ContadorOcorrenciaTest" time="0.003"/>
-  <testcase name="verificarOcorrenciasComStringUmaOcorrenciaTest" classname="com.main.ContadorOcorrenciaTest" time="0.01"/>
-  <testcase name="contarOcorrenciasVetorNuloTest" classname="com.main.ContadorOcorrenciaTest" time="0.002"/>
-  <testcase name="contarOcorrenciasNumeroNegativoTest" classname="com.main.ContadorOcorrenciaTest" time="0.005"/>
-  <testcase name="verificarOcorrenciasComStringMultiplasTest" classname="com.main.ContadorOcorrenciaTest" time="0.01"/>
-  <testcase name="contarOcorrenciasNumeroPresenteTest" classname="com.main.ContadorOcorrenciaTest" time="0.004"/>
-  <testcase name="encontrarPosicoesEncontradasTest" classname="com.main.ContadorOcorrenciaTest" time="0.005"/>
-  <testcase name="verificarOcorrenciasVetorNuloTest" classname="com.main.ContadorOcorrenciaTest" time="0.002"/>
-  <testcase name="encontrarPosicoesPrimeiraPosicaoTest" classname="com.main.ContadorOcorrenciaTest" time="0.004"/>
-  <testcase name="verificarOcorrenciasComStringNenhumaOcorrenciaTest" classname="com.main.ContadorOcorrenciaTest" time="0.003"/>
-  <testcase name="contarOcorrenciasTodosElementosIguaisTest" classname="com.main.ContadorOcorrenciaTest" time="0.002"/>
-  <testcase name="encontrarPosicoesUltimaPosicaoTest" classname="com.main.ContadorOcorrenciaTest" time="0.003"/>
-  <testcase name="encontrarPosicoesPosicoesConsecutivasTest" classname="com.main.ContadorOcorrenciaTest" time="0.009"/>
+  <testcase name="verificarOcorrenciasNumeroPresenteMultiplasVezesTest" classname="com.main.ContadorOcorrenciaTest" time="0.009"/>
+  <testcase name="encontrarPosicoesPosicoesEspalhadasTest" classname="com.main.ContadorOcorrenciaTest" time="0.003"/>
+  <testcase name="verificarOcorrenciasNumeroPresenteUmaVezTest" classname="com.main.ContadorOcorrenciaTest" time="0.018"/>
+  <testcase name="verificarOcorrenciasVetorGrandeTest" classname="com.main.ContadorOcorrenciaTest" time="0.004"/>
+  <testcase name="encontrarPosicoesEncontradasTest" classname="com.main.ContadorOcorrenciaTest" time="0.007"/>
+  <testcase name="verificarOcorrenciasVetorNuloTest" classname="com.main.ContadorOcorrenciaTest" time="0.008"/>
+  <testcase name="verificarOcorrenciasNumeroNegativoTest" classname="com.main.ContadorOcorrenciaTest" time="0.005"/>
+  <testcase name="encontrarPosicoesPrimeiraPosicaoTest" classname="com.main.ContadorOcorrenciaTest" time="0.002"/>
+  <testcase name="encontrarPosicoesUltimaPosicaoTest" classname="com.main.ContadorOcorrenciaTest" time="0.001"/>
+  <testcase name="verificarOcorrenciasNumeroAusenteTest" classname="com.main.ContadorOcorrenciaTest" time="0.001"/>
+  <testcase name="encontrarPosicoesPosicoesConsecutivasTest" classname="com.main.ContadorOcorrenciaTest" time="0.003"/>
   <testcase name="encontrarPosicoesNaoEncontradasTest" classname="com.main.ContadorOcorrenciaTest" time="0.002"/>
-  <testcase name="encontrarPosicoesUmaPosicaoTest" classname="com.main.ContadorOcorrenciaTest" time="0.007"/>
-  <testcase name="contarOcorrenciasVetorVazioTest" classname="com.main.ContadorOcorrenciaTest" time="0.005"/>
+  <testcase name="encontrarPosicoesUmaPosicaoTest" classname="com.main.ContadorOcorrenciaTest" time="0.001"/>
   <testcase name="encontrarPosicoesVetorNuloTest" classname="com.main.ContadorOcorrenciaTest" time="0.003"/>
+  <testcase name="verificarOcorrenciasTodosElementosIguaisTest" classname="com.main.ContadorOcorrenciaTest" time="0.003"/>
   <testcase name="verificarOcorrenciasVetorVazioTest" classname="com.main.ContadorOcorrenciaTest" time="0.003"/>
 </testsuite>
