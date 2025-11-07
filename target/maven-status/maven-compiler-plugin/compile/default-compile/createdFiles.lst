@@ -1,5 +1,6 @@
 com\main\Fatorial.class
 com\main\SomaDois.class
+principal\Algoritmos.class
 com\main\Par.class
 com\main\FaltaUm.class
 com\main\PesquisaLinear.class
@@ -7,5 +8,4 @@ com\main\CalculoMedia.class
 com\main\ContadorOcorrencia.class
 com\main\SegundoMaiorNumero.class
 com\main\Primo.class
-com\main\Algoritmos.class
 com\main\Strings.class

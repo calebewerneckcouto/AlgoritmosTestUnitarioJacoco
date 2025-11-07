@@ -85,9 +85,8 @@
             <configuration>
               <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
               <excludes>
-                <exclude>**/Algoritmos.java</exclude>
-                <exclude>**/Algoritmos$*.class</exclude>
-                <exclude>com/main/Algoritmos.class</exclude>
+               <exclude>**/Algoritmos*</exclude>
+               <exclude>**/principal/**</exclude>
               </excludes>
             </configuration>
           </execution>
@@ -98,9 +97,8 @@
             </goals>
             <configuration>
               <excludes>
-                <exclude>**/Algoritmos.java</exclude>
-                <exclude>**/Algoritmos$*.class</exclude>
-                <exclude>com/main/Algoritmos.class</exclude>
+               <exclude>**/Algoritmos*</exclude>
+              <exclude>**/principal/**</exclude>
               </excludes>
               <rules>
                 <rule>

@@ -1,10 +1,21 @@
-package com.main;
+package principal;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.main.CalculoMedia;
+import com.main.ContadorOcorrencia;
+import com.main.FaltaUm;
+import com.main.Fatorial;
+import com.main.Par;
+import com.main.PesquisaLinear;
+import com.main.Primo;
+import com.main.SegundoMaiorNumero;
+import com.main.SomaDois;
+import com.main.Strings;
 
 public class Algoritmos {
     
